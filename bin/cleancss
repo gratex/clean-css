@@ -35,7 +35,8 @@ commands
   .option('--skip-restructuring', 'Disable restructuring optimizations')
   .option('--skip-shorthand-compacting', 'Disable shorthand compacting')
   .option('--source-map', 'Enables building input\'s source map')
-  .option('--source-map-inline-sources', 'Enables inlining sources inside source maps');
+  .option('--source-map-inline-sources', 'Enables inlining sources inside source maps')
+  .option('--cache-bust [version]', 'Append `cacheBust=version` query to URLs');
 
 commands.on('--help', function () {
   console.log('  Examples:\n');
@@ -80,7 +81,8 @@ var options = {
   shorthandCompacting: commands.skipShorthandCompacting ? false : true,
   sourceMap: commands.sourceMap,
   sourceMapInlineSources: commands.sourceMapInlineSources,
-  target: commands.output
+  target: commands.output,
+  cacheBust: commands.cacheBust
 };
 
 if (options.root || commands.args.length > 0) {
